@@ -1,0 +1,26 @@
+server:
+  port: 9016
+
+spring:
+  rabbitmq:
+    host: localhost
+    port: 15672
+    username: guest
+    password: guest
+  cloud:
+    stream:
+      bindings:
+        myMessageOutput:
+          group: order
+          content-type: application/json
+feign:
+  hystrix:
+    enabled: true
+  compression:
+    request:
+      enabled: true
+      mime-types: text/xml,application/xml,application/json;charset=UTF-8
+      min-request-size: 1024
+    response:
+      enabled: true
+
