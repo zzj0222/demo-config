@@ -1,5 +1,5 @@
 server:
-  port: 9017
+  port: 9019
 
 spring:
   rabbitmq:
@@ -7,6 +7,7 @@ spring:
     port: 5672
     username: guest
     password: guest
+
   cloud:
     stream:
       bindings:
@@ -14,8 +15,6 @@ spring:
           #交换机
           destination: wdmiaosha
           content-type: application/json
-    stream:
-      bindings:
         secondsKillInput:
           #交换机
           destination: wdmiaosha
