@@ -1,5 +1,5 @@
 server:
-  port: 9016
+  port: 9017
 
 spring:
   rabbitmq:
@@ -10,14 +10,24 @@ spring:
   cloud:
     stream:
       bindings:
-        inventoryReductionOutPut:
-          destination: wdtest_
-          group: order
+        secondsKillOutput:
+          #交换机
+          destination: wdmiaosha
           content-type: application/json
-        myMessageOutput:
-          destination: wdtest_
-          group: order
+    stream:
+      bindings:
+        secondsKillInput:
+          #交换机
+          destination: wdmiaosha
+          #队列
+          group: miaosha
           content-type: application/json
+#        secondsKillInput2:
+#          #交换机
+#          destination: wdtest
+#          #队列
+#          group: miaosha2
+#          content-type: application/json
 
 
 
