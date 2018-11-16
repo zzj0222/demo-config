@@ -1,0 +1,14 @@
+server:
+  port: 9100
+
+feign:
+  hystrix:
+    enabled: true
+  compression:
+    request:
+      enabled: true
+      mime-types: text/xml,application/xml,application/json;charset=UTF-8
+      min-request-size: 1024
+    response:
+      enabled: true
+

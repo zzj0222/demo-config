@@ -12,3 +12,23 @@ feign:
     response:
       enabled: true
 
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://120.76.46.168:3306/db_jiayi_member?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false
+    username: jiayi_member
+    password: jiayi_member@test
+    type: com.alibaba.druid.pool.DruidDataSource
+    filters: stat
+    maxActive: 30
+    initialSize: 10
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: true
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
