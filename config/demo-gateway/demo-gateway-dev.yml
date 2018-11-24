@@ -1,2 +1,9 @@
 server:
   port: 9011
+
+zuul:
+  routes:
+    demo-auth:
+      path: /demo-auth/**
+      service-id: demo-auth
+      sensitive-headers: '*'
