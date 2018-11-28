@@ -1,6 +1,9 @@
 server:
   port: 5555
 
+management:
+  security:
+    enabled: false
 zuul:
   routes:
     demo-auth:
