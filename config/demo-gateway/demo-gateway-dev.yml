@@ -21,8 +21,8 @@ zuul:
 
   # 不许外部访问只能服务之间调用
   ignored-patterns:
-    - /demo-member/api/memberRpc/**
-    - /demo-product/api/productRpc/**
+    #- /demo-member/api/memberRpc/**
+    #- /demo-product/api/productRpc/**
 
 
 
