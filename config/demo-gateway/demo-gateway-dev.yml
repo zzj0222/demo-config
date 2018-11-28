@@ -7,7 +7,7 @@ zuul:
       path: /demo-auth/**
       service-id: demo-auth
       sensitive-headers: '*'
-    demo-auth:
+    demo-member:
       path: /demo-member/**
       service-id: demo-member
       sensitive-headers: '*'
