@@ -13,6 +13,17 @@ zuul:
       path: /demo-member/**
       service-id: demo-member
       sensitive-headers: '*'
+
+    demo-product:
+      path: /demo-product/**
+      service-id: demo-product
+      sensitive-headers: '*'
+
+  # 不许外部访问只能服务之间调用
   ignored-patterns:
     - /demo-member/api/memberRpc/**
+    - /demo-product/api/productRpc/**
+
+
+
 
