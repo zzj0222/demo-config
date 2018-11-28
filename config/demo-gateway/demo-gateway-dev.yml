@@ -13,6 +13,6 @@ zuul:
       path: /demo-member/**
       service-id: demo-member
       sensitive-headers: '*'
-      ignored-patterns:
-        - /demo-member/api/memberRpc/**
+  ignored-patterns:
+    - /demo-member/api/memberRpc/**
 
