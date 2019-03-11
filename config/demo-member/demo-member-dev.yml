@@ -1,16 +1,16 @@
 server:
   port: 9012
 
-feign:
-  hystrix:
-    enabled: true
-  compression:
-    request:
-      enabled: true
-      mime-types: text/xml,application/xml,application/json;charset=UTF-8
-      min-request-size: 1024
-    response:
-      enabled: true
+#feign:
+#  hystrix:
+#    enabled: true
+#  compression:
+#    request:
+#      enabled: true
+#      mime-types: text/xml,application/xml,application/json;charset=UTF-8
+#      min-request-size: 1024
+#    response:
+#      enabled: true
 
 spring:
   datasource:
@@ -31,12 +31,6 @@ spring:
     testOnReturn: false
     poolPreparedStatements: true
     maxOpenPreparedStatements: 20
-
-swagger:
-  enable: true
-  host: 127.0.0.1:5555
-#===================redis===================
-spring:
   redis:
     host: localhost
     port: 6379
@@ -48,3 +42,9 @@ spring:
       max-idle: 10
       min-idle: 0
     timeout: 0
+    
+swagger:
+  enable: true
+  host: 127.0.0.1:5555
+#===================redis===================
+
