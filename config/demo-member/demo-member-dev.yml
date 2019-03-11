@@ -32,6 +32,9 @@ spring:
     poolPreparedStatements: true
     maxOpenPreparedStatements: 20
 
+swagger:
+  enable: true
+  host: 127.0.0.1:5555
 #===================redis===================
 spring:
   redis:
