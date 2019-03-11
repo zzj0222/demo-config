@@ -15,10 +15,9 @@ feign:
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://120.76.46.168:3306/db_jiayi_member?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false
-    username: jiayi_member
-    password: jiayi_member@test
-    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://120.76.46.168:3306/db_jiayi?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false
+    username: jiayi
+    password: jiayi@test
     filters: stat
     maxActive: 30
     initialSize: 10

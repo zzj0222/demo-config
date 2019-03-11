@@ -20,9 +20,9 @@ zuul:
       sensitive-headers: '*'
 
   # 不许外部访问只能服务之间调用
-  ignored-patterns:
-    #- /demo-member/api/memberRpc/**
-    #- /demo-product/api/productRpc/**
+#  ignored-patterns:
+#    - /demo-member/api/memberRpc/**
+#    - /demo-product/api/productRpc/**
 
 
 
