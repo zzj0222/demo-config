@@ -1,29 +1,18 @@
-server:
-  port: 5555
+spring:
+  application:
+    name: demo-gateaway
+  clound:
+    config:
+      enabled: false
+app:
+  id: demo-gateaway
+apollo:
+  bootstrap:
+    enable: true
+    namespace: application
 
-
-zuul:
-  routes:
-    demo-auth:
-      path: /demo-auth/**
-      service-id: demo-auth
-      sensitive-headers: '*'
-
-    demo-member:
-      path: /demo-member/**
-      service-id: demo-member
-      sensitive-headers: '*'
-
-    demo-product:
-      path: /demo-product/**
-      service-id: demo-product
-      sensitive-headers: '*'
-
-  # 不许外部访问只能服务之间调用
-#  ignored-patterns:
-#    - /demo-member/api/memberRpc/**
-#    - /demo-product/api/productRpc/**
-
-
-
+eureka:
+  client:
+    service-url:
+      defaultZone: http://demo:demo!2018@demo-eureka-1:8762/eureka/,http://demo:demo!2018@demo-eureka-2:8763/eureka/
 
