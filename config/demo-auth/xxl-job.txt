@@ -1,0 +1,603 @@
+/*
+ Navicat Premium Data Transfer
+
+ Source Server         : 10.101.72.208-djs
+ Source Server Type    : PostgreSQL
+ Source Server Version : 90608
+ Source Host           : 10.101.72.208:5432
+ Source Catalog        : hdftbl_db
+ Source Schema         : djs
+
+ Target Server Type    : PostgreSQL
+ Target Server Version : 90608
+ File Encoding         : 65001
+
+ Date: 02/12/2019 16:51:26
+*/
+
+
+-- ----------------------------
+-- Sequence structure for xxl_job_qrtz_trigger_group_id_seq
+-- ----------------------------
+DROP SEQUENCE IF EXISTS "djs"."xxl_job_qrtz_trigger_group_id_seq";
+CREATE SEQUENCE "djs"."xxl_job_qrtz_trigger_group_id_seq"
+INCREMENT 1
+MINVALUE  1
+MAXVALUE 9223372036854775807
+START 1
+CACHE 1;
+
+-- ----------------------------
+-- Sequence structure for xxl_job_qrtz_trigger_info_id_seq
+-- ----------------------------
+DROP SEQUENCE IF EXISTS "djs"."xxl_job_qrtz_trigger_info_id_seq";
+CREATE SEQUENCE "djs"."xxl_job_qrtz_trigger_info_id_seq"
+INCREMENT 1
+MINVALUE  1
+MAXVALUE 9223372036854775807
+START 1
+CACHE 1;
+
+-- ----------------------------
+-- Sequence structure for xxl_job_qrtz_trigger_log_id_seq
+-- ----------------------------
+DROP SEQUENCE IF EXISTS "djs"."xxl_job_qrtz_trigger_log_id_seq";
+CREATE SEQUENCE "djs"."xxl_job_qrtz_trigger_log_id_seq"
+INCREMENT 1
+MINVALUE  1
+MAXVALUE 9223372036854775807
+START 1
+CACHE 1;
+
+-- ----------------------------
+-- Sequence structure for xxl_job_qrtz_trigger_logglue_id_seq
+-- ----------------------------
+DROP SEQUENCE IF EXISTS "djs"."xxl_job_qrtz_trigger_logglue_id_seq";
+CREATE SEQUENCE "djs"."xxl_job_qrtz_trigger_logglue_id_seq"
+INCREMENT 1
+MINVALUE  1
+MAXVALUE 9223372036854775807
+START 1
+CACHE 1;
+
+-- ----------------------------
+-- Sequence structure for xxl_job_qrtz_trigger_registry_id_seq
+-- ----------------------------
+DROP SEQUENCE IF EXISTS "djs"."xxl_job_qrtz_trigger_registry_id_seq";
+CREATE SEQUENCE "djs"."xxl_job_qrtz_trigger_registry_id_seq"
+INCREMENT 1
+MINVALUE  1
+MAXVALUE 9223372036854775807
+START 1
+CACHE 1;
+
+-- ----------------------------
+-- Table structure for xxl_job_qrtz_blob_triggers
+-- ----------------------------
+DROP TABLE IF EXISTS "djs"."xxl_job_qrtz_blob_triggers";
+CREATE TABLE "djs"."xxl_job_qrtz_blob_triggers" (
+  "sched_name" varchar(120) COLLATE "pg_catalog"."default" NOT NULL,
+  "trigger_name" varchar(200) COLLATE "pg_catalog"."default" NOT NULL,
+  "trigger_group" varchar(200) COLLATE "pg_catalog"."default" NOT NULL,
+  "blob_data" bytea
+)
+;
+
+-- ----------------------------
+-- Table structure for xxl_job_qrtz_calendars
+-- ----------------------------
+DROP TABLE IF EXISTS "djs"."xxl_job_qrtz_calendars";
+CREATE TABLE "djs"."xxl_job_qrtz_calendars" (
+  "sched_name" varchar(120) COLLATE "pg_catalog"."default" NOT NULL,
+  "calendar_name" varchar(200) COLLATE "pg_catalog"."default" NOT NULL,
+  "calendar" bytea NOT NULL
+)
+;
+
+-- ----------------------------
+-- Table structure for xxl_job_qrtz_cron_triggers
+-- ----------------------------
+DROP TABLE IF EXISTS "djs"."xxl_job_qrtz_cron_triggers";
+CREATE TABLE "djs"."xxl_job_qrtz_cron_triggers" (
+  "sched_name" varchar(120) COLLATE "pg_catalog"."default" NOT NULL,
+  "trigger_name" varchar(200) COLLATE "pg_catalog"."default" NOT NULL,
+  "trigger_group" varchar(200) COLLATE "pg_catalog"."default" NOT NULL,
+  "cron_expression" varchar(200) COLLATE "pg_catalog"."default" NOT NULL,
+  "time_zone_id" varchar(80) COLLATE "pg_catalog"."default"
+)
+;
+
+-- ----------------------------
+-- Table structure for xxl_job_qrtz_fired_triggers
+-- ----------------------------
+DROP TABLE IF EXISTS "djs"."xxl_job_qrtz_fired_triggers";
+CREATE TABLE "djs"."xxl_job_qrtz_fired_triggers" (
+  "sched_name" varchar(120) COLLATE "pg_catalog"."default" NOT NULL,
+  "entry_id" varchar(95) COLLATE "pg_catalog"."default" NOT NULL,
+  "trigger_name" varchar(200) COLLATE "pg_catalog"."default" NOT NULL,
+  "trigger_group" varchar(200) COLLATE "pg_catalog"."default" NOT NULL,
+  "instance_name" varchar(200) COLLATE "pg_catalog"."default" NOT NULL,
+  "fired_time" int8 NOT NULL,
+  "sched_time" int8 NOT NULL,
+  "priority" int4 NOT NULL,
+  "state" varchar(16) COLLATE "pg_catalog"."default" NOT NULL,
+  "job_name" varchar(200) COLLATE "pg_catalog"."default",
+  "job_group" varchar(200) COLLATE "pg_catalog"."default",
+  "is_nonconcurrent" bool,
+  "requests_recovery" bool
+)
+;
+
+-- ----------------------------
+-- Table structure for xxl_job_qrtz_job_details
+-- ----------------------------
+DROP TABLE IF EXISTS "djs"."xxl_job_qrtz_job_details";
+CREATE TABLE "djs"."xxl_job_qrtz_job_details" (
+  "sched_name" varchar(120) COLLATE "pg_catalog"."default" NOT NULL,
+  "job_name" varchar(200) COLLATE "pg_catalog"."default" NOT NULL,
+  "job_group" varchar(200) COLLATE "pg_catalog"."default" NOT NULL,
+  "description" varchar(250) COLLATE "pg_catalog"."default",
+  "job_class_name" varchar(250) COLLATE "pg_catalog"."default" NOT NULL,
+  "is_durable" bool NOT NULL,
+  "is_nonconcurrent" bool NOT NULL,
+  "is_update_data" bool NOT NULL,
+  "requests_recovery" bool NOT NULL,
+  "job_data" bytea
+)
+;
+
+-- ----------------------------
+-- Table structure for xxl_job_qrtz_locks
+-- ----------------------------
+DROP TABLE IF EXISTS "djs"."xxl_job_qrtz_locks";
+CREATE TABLE "djs"."xxl_job_qrtz_locks" (
+  "sched_name" varchar(120) COLLATE "pg_catalog"."default" NOT NULL,
+  "lock_name" varchar(40) COLLATE "pg_catalog"."default" NOT NULL
+)
+;
+
+-- ----------------------------
+-- Table structure for xxl_job_qrtz_paused_trigger_grps
+-- ----------------------------
+DROP TABLE IF EXISTS "djs"."xxl_job_qrtz_paused_trigger_grps";
+CREATE TABLE "djs"."xxl_job_qrtz_paused_trigger_grps" (
+  "sched_name" varchar(120) COLLATE "pg_catalog"."default" NOT NULL,
+  "trigger_group" varchar(200) COLLATE "pg_catalog"."default" NOT NULL
+)
+;
+
+-- ----------------------------
+-- Table structure for xxl_job_qrtz_scheduler_state
+-- ----------------------------
+DROP TABLE IF EXISTS "djs"."xxl_job_qrtz_scheduler_state";
+CREATE TABLE "djs"."xxl_job_qrtz_scheduler_state" (
+  "sched_name" varchar(120) COLLATE "pg_catalog"."default" NOT NULL,
+  "instance_name" varchar(200) COLLATE "pg_catalog"."default" NOT NULL,
+  "last_checkin_time" int8 NOT NULL,
+  "checkin_interval" int8 NOT NULL
+)
+;
+
+-- ----------------------------
+-- Table structure for xxl_job_qrtz_simple_triggers
+-- ----------------------------
+DROP TABLE IF EXISTS "djs"."xxl_job_qrtz_simple_triggers";
+CREATE TABLE "djs"."xxl_job_qrtz_simple_triggers" (
+  "sched_name" varchar(120) COLLATE "pg_catalog"."default" NOT NULL,
+  "trigger_name" varchar(200) COLLATE "pg_catalog"."default" NOT NULL,
+  "trigger_group" varchar(200) COLLATE "pg_catalog"."default" NOT NULL,
+  "repeat_count" int8 NOT NULL,
+  "repeat_interval" int8 NOT NULL,
+  "times_triggered" int8 NOT NULL
+)
+;
+
+-- ----------------------------
+-- Table structure for xxl_job_qrtz_simprop_triggers
+-- ----------------------------
+DROP TABLE IF EXISTS "djs"."xxl_job_qrtz_simprop_triggers";
+CREATE TABLE "djs"."xxl_job_qrtz_simprop_triggers" (
+  "sched_name" varchar(120) COLLATE "pg_catalog"."default" NOT NULL,
+  "trigger_name" varchar(200) COLLATE "pg_catalog"."default" NOT NULL,
+  "trigger_group" varchar(200) COLLATE "pg_catalog"."default" NOT NULL,
+  "str_prop_1" varchar(512) COLLATE "pg_catalog"."default",
+  "str_prop_2" varchar(512) COLLATE "pg_catalog"."default",
+  "str_prop_3" varchar(512) COLLATE "pg_catalog"."default",
+  "int_prop_1" int4,
+  "int_prop_2" int4,
+  "long_prop_1" int8,
+  "long_prop_2" int8,
+  "dec_prop_1" numeric(13,4),
+  "dec_prop_2" numeric(13,4),
+  "bool_prop_1" bool,
+  "bool_prop_2" bool
+)
+;
+
+-- ----------------------------
+-- Table structure for xxl_job_qrtz_trigger_group
+-- ----------------------------
+DROP TABLE IF EXISTS "djs"."xxl_job_qrtz_trigger_group";
+CREATE TABLE "djs"."xxl_job_qrtz_trigger_group" (
+  "id" int4 NOT NULL DEFAULT nextval('"djs".xxl_job_qrtz_trigger_group_id_seq'::regclass),
+  "app_name" varchar(64) COLLATE "pg_catalog"."default" NOT NULL,
+  "title" varchar(128) COLLATE "pg_catalog"."default",
+  "order" int2 NOT NULL DEFAULT '0'::smallint,
+  "address_type" int2 NOT NULL DEFAULT '0'::smallint,
+  "address_list" varchar(512) COLLATE "pg_catalog"."default",
+  "old_address_list" varchar(512) COLLATE "pg_catalog"."default"
+)
+;
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_group"."app_name" IS '执行器AppName';
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_group"."title" IS '执行器名称';
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_group"."order" IS '排序';
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_group"."address_type" IS '执行器地址类型：0=自动注册、1=手动录入';
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_group"."address_list" IS '执行器地址列表，多地址逗号分隔';
+
+-- ----------------------------
+-- Table structure for xxl_job_qrtz_trigger_info
+-- ----------------------------
+DROP TABLE IF EXISTS "djs"."xxl_job_qrtz_trigger_info";
+CREATE TABLE "djs"."xxl_job_qrtz_trigger_info" (
+  "id" int4 NOT NULL DEFAULT nextval('"djs".xxl_job_qrtz_trigger_info_id_seq'::regclass),
+  "job_group" int4 NOT NULL,
+  "job_cron" varchar(128) COLLATE "pg_catalog"."default" NOT NULL,
+  "job_desc" varchar(255) COLLATE "pg_catalog"."default" NOT NULL,
+  "add_time" timestamp(6),
+  "update_time" timestamp(6),
+  "author" varchar(64) COLLATE "pg_catalog"."default",
+  "alarm_email" varchar(255) COLLATE "pg_catalog"."default",
+  "executor_route_strategy" varchar(50) COLLATE "pg_catalog"."default",
+  "executor_handler" varchar(255) COLLATE "pg_catalog"."default",
+  "executor_param" varchar(512) COLLATE "pg_catalog"."default",
+  "executor_block_strategy" varchar(50) COLLATE "pg_catalog"."default",
+  "executor_fail_strategy" varchar(50) COLLATE "pg_catalog"."default",
+  "glue_type" varchar(50) COLLATE "pg_catalog"."default" NOT NULL,
+  "glue_source" text COLLATE "pg_catalog"."default",
+  "glue_remark" varchar(128) COLLATE "pg_catalog"."default",
+  "glue_updatetime" timestamp(6),
+  "child_jobid" varchar(255) COLLATE "pg_catalog"."default",
+  "execute_timeout" int4 NOT NULL DEFAULT 0
+)
+;
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_info"."job_group" IS '执行器主键ID';
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_info"."job_cron" IS '任务执行CRON';
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_info"."author" IS '作者';
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_info"."alarm_email" IS '报警邮件';
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_info"."executor_route_strategy" IS '执行器路由策略';
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_info"."executor_handler" IS '执行器任务handler';
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_info"."executor_param" IS '执行器任务参数';
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_info"."executor_block_strategy" IS '阻塞处理策略';
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_info"."executor_fail_strategy" IS '失败处理策略';
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_info"."glue_type" IS 'GLUE类型';
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_info"."glue_source" IS 'GLUE源代码';
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_info"."glue_remark" IS 'GLUE备注';
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_info"."glue_updatetime" IS 'GLUE更新时间';
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_info"."child_jobid" IS '子任务ID，多个逗号分隔';
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_info"."execute_timeout" IS '任务执行超时时间，单位秒';
+
+-- ----------------------------
+-- Table structure for xxl_job_qrtz_trigger_log
+-- ----------------------------
+DROP TABLE IF EXISTS "djs"."xxl_job_qrtz_trigger_log";
+CREATE TABLE "djs"."xxl_job_qrtz_trigger_log" (
+  "id" int4 NOT NULL DEFAULT nextval('"djs".xxl_job_qrtz_trigger_log_id_seq'::regclass),
+  "job_group" int4 NOT NULL,
+  "job_id" int4 NOT NULL,
+  "glue_type" varchar(50) COLLATE "pg_catalog"."default",
+  "executor_address" varchar(255) COLLATE "pg_catalog"."default",
+  "executor_handler" varchar(255) COLLATE "pg_catalog"."default",
+  "executor_param" varchar(512) COLLATE "pg_catalog"."default",
+  "trigger_time" timestamp(6),
+  "trigger_code" int4 NOT NULL,
+  "trigger_msg" varchar(2048) COLLATE "pg_catalog"."default",
+  "handle_time" timestamp(6),
+  "handle_code" int4 NOT NULL,
+  "handle_msg" varchar(2048) COLLATE "pg_catalog"."default"
+)
+;
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_log"."job_group" IS '执行器主键ID';
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_log"."job_id" IS '任务，主键ID';
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_log"."glue_type" IS 'GLUE类型';
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_log"."executor_address" IS '执行器地址，本次执行的地址';
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_log"."executor_handler" IS '执行器任务handler';
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_log"."executor_param" IS '执行器任务参数';
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_log"."trigger_time" IS '调度-时间';
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_log"."trigger_code" IS '调度-结果';
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_log"."trigger_msg" IS '调度-日志';
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_log"."handle_time" IS '执行-时间';
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_log"."handle_code" IS '执行-状态';
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_log"."handle_msg" IS '执行-日志';
+
+-- ----------------------------
+-- Table structure for xxl_job_qrtz_trigger_logglue
+-- ----------------------------
+DROP TABLE IF EXISTS "djs"."xxl_job_qrtz_trigger_logglue";
+CREATE TABLE "djs"."xxl_job_qrtz_trigger_logglue" (
+  "id" int4 NOT NULL DEFAULT nextval('"djs".xxl_job_qrtz_trigger_logglue_id_seq'::regclass),
+  "job_id" int4 NOT NULL,
+  "glue_type" varchar(50) COLLATE "pg_catalog"."default",
+  "glue_source" text COLLATE "pg_catalog"."default",
+  "glue_remark" varchar(128) COLLATE "pg_catalog"."default" NOT NULL,
+  "add_time" timestamp(6),
+  "update_time" timestamp(6)
+)
+;
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_logglue"."job_id" IS '任务，主键ID';
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_logglue"."glue_type" IS 'GLUE类型';
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_logglue"."glue_source" IS 'GLUE源代码';
+COMMENT ON COLUMN "djs"."xxl_job_qrtz_trigger_logglue"."glue_remark" IS 'GLUE备注';
+
+-- ----------------------------
+-- Table structure for xxl_job_qrtz_trigger_registry
+-- ----------------------------
+DROP TABLE IF EXISTS "djs"."xxl_job_qrtz_trigger_registry";
+CREATE TABLE "djs"."xxl_job_qrtz_trigger_registry" (
+  "id" int4 NOT NULL DEFAULT nextval('"djs".xxl_job_qrtz_trigger_registry_id_seq'::regclass),
+  "registry_group" varchar(255) COLLATE "pg_catalog"."default" NOT NULL,
+  "registry_key" varchar(255) COLLATE "pg_catalog"."default" NOT NULL,
+  "registry_value" varchar(255) COLLATE "pg_catalog"."default" NOT NULL,
+  "update_time" timestamp(6) NOT NULL DEFAULT now()
+)
+;
+
+-- ----------------------------
+-- Table structure for xxl_job_qrtz_triggers
+-- ----------------------------
+DROP TABLE IF EXISTS "djs"."xxl_job_qrtz_triggers";
+CREATE TABLE "djs"."xxl_job_qrtz_triggers" (
+  "sched_name" varchar(120) COLLATE "pg_catalog"."default" NOT NULL,
+  "trigger_name" varchar(200) COLLATE "pg_catalog"."default" NOT NULL,
+  "trigger_group" varchar(200) COLLATE "pg_catalog"."default" NOT NULL,
+  "job_name" varchar(200) COLLATE "pg_catalog"."default" NOT NULL,
+  "job_group" varchar(200) COLLATE "pg_catalog"."default" NOT NULL,
+  "description" varchar(250) COLLATE "pg_catalog"."default",
+  "next_fire_time" int8,
+  "prev_fire_time" int8,
+  "priority" int4,
+  "trigger_state" varchar(16) COLLATE "pg_catalog"."default" NOT NULL,
+  "trigger_type" varchar(8) COLLATE "pg_catalog"."default" NOT NULL,
+  "start_time" int8 NOT NULL,
+  "end_time" int8,
+  "calendar_name" varchar(200) COLLATE "pg_catalog"."default",
+  "misfire_instr" int2,
+  "job_data" bytea
+)
+;
+
+-- ----------------------------
+-- Alter sequences owned by
+-- ----------------------------
+ALTER SEQUENCE "djs"."xxl_job_qrtz_trigger_group_id_seq"
+OWNED BY "djs"."xxl_job_qrtz_trigger_group"."id";
+SELECT setval('"djs"."xxl_job_qrtz_trigger_group_id_seq"', 226, true);
+ALTER SEQUENCE "djs"."xxl_job_qrtz_trigger_info_id_seq"
+OWNED BY "djs"."xxl_job_qrtz_trigger_info"."id";
+SELECT setval('"djs"."xxl_job_qrtz_trigger_info_id_seq"', 223, true);
+ALTER SEQUENCE "djs"."xxl_job_qrtz_trigger_log_id_seq"
+OWNED BY "djs"."xxl_job_qrtz_trigger_log"."id";
+SELECT setval('"djs"."xxl_job_qrtz_trigger_log_id_seq"', 794, true);
+ALTER SEQUENCE "djs"."xxl_job_qrtz_trigger_logglue_id_seq"
+OWNED BY "djs"."xxl_job_qrtz_trigger_logglue"."id";
+SELECT setval('"djs"."xxl_job_qrtz_trigger_logglue_id_seq"', 2, false);
+ALTER SEQUENCE "djs"."xxl_job_qrtz_trigger_registry_id_seq"
+OWNED BY "djs"."xxl_job_qrtz_trigger_registry"."id";
+SELECT setval('"djs"."xxl_job_qrtz_trigger_registry_id_seq"', 2, false);
+
+-- ----------------------------
+-- Primary Key structure for table xxl_job_qrtz_blob_triggers
+-- ----------------------------
+ALTER TABLE "djs"."xxl_job_qrtz_blob_triggers" ADD CONSTRAINT "xxl_job_qrtz_blob_triggers_pkey" PRIMARY KEY ("sched_name", "trigger_name", "trigger_group");
+
+-- ----------------------------
+-- Primary Key structure for table xxl_job_qrtz_calendars
+-- ----------------------------
+ALTER TABLE "djs"."xxl_job_qrtz_calendars" ADD CONSTRAINT "xxl_job_qrtz_calendars_pkey" PRIMARY KEY ("sched_name", "calendar_name");
+
+-- ----------------------------
+-- Primary Key structure for table xxl_job_qrtz_cron_triggers
+-- ----------------------------
+ALTER TABLE "djs"."xxl_job_qrtz_cron_triggers" ADD CONSTRAINT "xxl_job_qrtz_cron_triggers_pkey" PRIMARY KEY ("sched_name", "trigger_name", "trigger_group");
+
+-- ----------------------------
+-- Indexes structure for table xxl_job_qrtz_fired_triggers
+-- ----------------------------
+CREATE INDEX "idx_qrtz_ft_inst_job_req_rcvry" ON "djs"."xxl_job_qrtz_fired_triggers" USING btree (
+  "sched_name" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST,
+  "instance_name" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST,
+  "requests_recovery" "pg_catalog"."bool_ops" ASC NULLS LAST
+);
+CREATE INDEX "idx_qrtz_ft_j_g" ON "djs"."xxl_job_qrtz_fired_triggers" USING btree (
+  "sched_name" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST,
+  "job_name" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST,
+  "job_group" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST
+);
+CREATE INDEX "idx_qrtz_ft_jg" ON "djs"."xxl_job_qrtz_fired_triggers" USING btree (
+  "sched_name" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST,
+  "job_group" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST
+);
+CREATE INDEX "idx_qrtz_ft_t_g" ON "djs"."xxl_job_qrtz_fired_triggers" USING btree (
+  "sched_name" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST,
+  "trigger_name" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST,
+  "trigger_group" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST
+);
+CREATE INDEX "idx_qrtz_ft_tg" ON "djs"."xxl_job_qrtz_fired_triggers" USING btree (
+  "sched_name" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST,
+  "trigger_group" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST
+);
+CREATE INDEX "idx_qrtz_ft_trig_inst_name" ON "djs"."xxl_job_qrtz_fired_triggers" USING btree (
+  "sched_name" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST,
+  "instance_name" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST
+);
+
+-- ----------------------------
+-- Primary Key structure for table xxl_job_qrtz_fired_triggers
+-- ----------------------------
+ALTER TABLE "djs"."xxl_job_qrtz_fired_triggers" ADD CONSTRAINT "xxl_job_qrtz_fired_triggers_pkey" PRIMARY KEY ("sched_name", "entry_id");
+
+-- ----------------------------
+-- Indexes structure for table xxl_job_qrtz_job_details
+-- ----------------------------
+CREATE INDEX "idx_qrtz_j_grp" ON "djs"."xxl_job_qrtz_job_details" USING btree (
+  "sched_name" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST,
+  "job_group" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST
+);
+CREATE INDEX "idx_qrtz_j_req_recovery" ON "djs"."xxl_job_qrtz_job_details" USING btree (
+  "sched_name" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST,
+  "requests_recovery" "pg_catalog"."bool_ops" ASC NULLS LAST
+);
+
+-- ----------------------------
+-- Primary Key structure for table xxl_job_qrtz_job_details
+-- ----------------------------
+ALTER TABLE "djs"."xxl_job_qrtz_job_details" ADD CONSTRAINT "xxl_job_qrtz_job_details_pkey" PRIMARY KEY ("sched_name", "job_name", "job_group");
+
+-- ----------------------------
+-- Primary Key structure for table xxl_job_qrtz_locks
+-- ----------------------------
+ALTER TABLE "djs"."xxl_job_qrtz_locks" ADD CONSTRAINT "xxl_job_qrtz_locks_pkey" PRIMARY KEY ("sched_name", "lock_name");
+
+-- ----------------------------
+-- Primary Key structure for table xxl_job_qrtz_paused_trigger_grps
+-- ----------------------------
+ALTER TABLE "djs"."xxl_job_qrtz_paused_trigger_grps" ADD CONSTRAINT "xxl_job_qrtz_paused_trigger_grps_pkey" PRIMARY KEY ("sched_name", "trigger_group");
+
+-- ----------------------------
+-- Primary Key structure for table xxl_job_qrtz_scheduler_state
+-- ----------------------------
+ALTER TABLE "djs"."xxl_job_qrtz_scheduler_state" ADD CONSTRAINT "xxl_job_qrtz_scheduler_state_pkey" PRIMARY KEY ("sched_name", "instance_name");
+
+-- ----------------------------
+-- Primary Key structure for table xxl_job_qrtz_simple_triggers
+-- ----------------------------
+ALTER TABLE "djs"."xxl_job_qrtz_simple_triggers" ADD CONSTRAINT "xxl_job_qrtz_simple_triggers_pkey" PRIMARY KEY ("sched_name", "trigger_name", "trigger_group");
+
+-- ----------------------------
+-- Primary Key structure for table xxl_job_qrtz_simprop_triggers
+-- ----------------------------
+ALTER TABLE "djs"."xxl_job_qrtz_simprop_triggers" ADD CONSTRAINT "xxl_job_qrtz_simprop_triggers_pkey" PRIMARY KEY ("sched_name", "trigger_name", "trigger_group");
+
+-- ----------------------------
+-- Primary Key structure for table xxl_job_qrtz_trigger_group
+-- ----------------------------
+ALTER TABLE "djs"."xxl_job_qrtz_trigger_group" ADD CONSTRAINT "xxl_job_qrtz_trigger_group_pkey" PRIMARY KEY ("id");
+
+-- ----------------------------
+-- Primary Key structure for table xxl_job_qrtz_trigger_info
+-- ----------------------------
+ALTER TABLE "djs"."xxl_job_qrtz_trigger_info" ADD CONSTRAINT "xxl_job_qrtz_trigger_info_pkey" PRIMARY KEY ("id");
+
+-- ----------------------------
+-- Indexes structure for table xxl_job_qrtz_trigger_log
+-- ----------------------------
+CREATE INDEX "i_trigger_time" ON "djs"."xxl_job_qrtz_trigger_log" USING btree (
+  "trigger_time" "pg_catalog"."timestamp_ops" ASC NULLS LAST
+);
+
+-- ----------------------------
+-- Primary Key structure for table xxl_job_qrtz_trigger_log
+-- ----------------------------
+ALTER TABLE "djs"."xxl_job_qrtz_trigger_log" ADD CONSTRAINT "xxl_job_qrtz_trigger_log_pkey" PRIMARY KEY ("id");
+
+-- ----------------------------
+-- Primary Key structure for table xxl_job_qrtz_trigger_logglue
+-- ----------------------------
+ALTER TABLE "djs"."xxl_job_qrtz_trigger_logglue" ADD CONSTRAINT "xxl_job_qrtz_trigger_logglue_pkey" PRIMARY KEY ("id");
+
+-- ----------------------------
+-- Primary Key structure for table xxl_job_qrtz_trigger_registry
+-- ----------------------------
+ALTER TABLE "djs"."xxl_job_qrtz_trigger_registry" ADD CONSTRAINT "xxl_job_qrtz_trigger_registry_pkey" PRIMARY KEY ("id");
+
+-- ----------------------------
+-- Indexes structure for table xxl_job_qrtz_triggers
+-- ----------------------------
+CREATE INDEX "idx_qrtz_t_c" ON "djs"."xxl_job_qrtz_triggers" USING btree (
+  "sched_name" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST,
+  "calendar_name" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST
+);
+CREATE INDEX "idx_qrtz_t_g" ON "djs"."xxl_job_qrtz_triggers" USING btree (
+  "sched_name" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST,
+  "trigger_group" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST
+);
+CREATE INDEX "idx_qrtz_t_j" ON "djs"."xxl_job_qrtz_triggers" USING btree (
+  "sched_name" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST,
+  "job_name" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST,
+  "job_group" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST
+);
+CREATE INDEX "idx_qrtz_t_jg" ON "djs"."xxl_job_qrtz_triggers" USING btree (
+  "sched_name" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST,
+  "job_group" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST
+);
+CREATE INDEX "idx_qrtz_t_n_g_state" ON "djs"."xxl_job_qrtz_triggers" USING btree (
+  "sched_name" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST,
+  "trigger_group" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST,
+  "trigger_state" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST
+);
+CREATE INDEX "idx_qrtz_t_n_state" ON "djs"."xxl_job_qrtz_triggers" USING btree (
+  "sched_name" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST,
+  "trigger_name" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST,
+  "trigger_group" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST,
+  "trigger_state" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST
+);
+CREATE INDEX "idx_qrtz_t_next_fire_time" ON "djs"."xxl_job_qrtz_triggers" USING btree (
+  "sched_name" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST,
+  "next_fire_time" "pg_catalog"."int8_ops" ASC NULLS LAST
+);
+CREATE INDEX "idx_qrtz_t_nft_misfire" ON "djs"."xxl_job_qrtz_triggers" USING btree (
+  "sched_name" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST,
+  "misfire_instr" "pg_catalog"."int2_ops" ASC NULLS LAST,
+  "next_fire_time" "pg_catalog"."int8_ops" ASC NULLS LAST
+);
+CREATE INDEX "idx_qrtz_t_nft_st" ON "djs"."xxl_job_qrtz_triggers" USING btree (
+  "sched_name" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST,
+  "trigger_state" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST,
+  "next_fire_time" "pg_catalog"."int8_ops" ASC NULLS LAST
+);
+CREATE INDEX "idx_qrtz_t_nft_st_misfire" ON "djs"."xxl_job_qrtz_triggers" USING btree (
+  "sched_name" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST,
+  "misfire_instr" "pg_catalog"."int2_ops" ASC NULLS LAST,
+  "next_fire_time" "pg_catalog"."int8_ops" ASC NULLS LAST,
+  "trigger_state" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST
+);
+CREATE INDEX "idx_qrtz_t_nft_st_misfire_grp" ON "djs"."xxl_job_qrtz_triggers" USING btree (
+  "sched_name" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST,
+  "misfire_instr" "pg_catalog"."int2_ops" ASC NULLS LAST,
+  "next_fire_time" "pg_catalog"."int8_ops" ASC NULLS LAST,
+  "trigger_group" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST,
+  "trigger_state" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST
+);
+CREATE INDEX "idx_qrtz_t_state" ON "djs"."xxl_job_qrtz_triggers" USING btree (
+  "sched_name" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST,
+  "trigger_state" COLLATE "pg_catalog"."default" "pg_catalog"."text_ops" ASC NULLS LAST
+);
+
+-- ----------------------------
+-- Primary Key structure for table xxl_job_qrtz_triggers
+-- ----------------------------
+ALTER TABLE "djs"."xxl_job_qrtz_triggers" ADD CONSTRAINT "xxl_job_qrtz_triggers_pkey" PRIMARY KEY ("sched_name", "trigger_name", "trigger_group");
+
+-- ----------------------------
+-- Foreign Keys structure for table xxl_job_qrtz_blob_triggers
+-- ----------------------------
+ALTER TABLE "djs"."xxl_job_qrtz_blob_triggers" ADD CONSTRAINT "xxl_job_qrtz_blob_triggers_sched_name_fkey" FOREIGN KEY ("sched_name", "trigger_name", "trigger_group") REFERENCES "djs"."xxl_job_qrtz_triggers" ("sched_name", "trigger_name", "trigger_group") ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- ----------------------------
+-- Foreign Keys structure for table xxl_job_qrtz_cron_triggers
+-- ----------------------------
+ALTER TABLE "djs"."xxl_job_qrtz_cron_triggers" ADD CONSTRAINT "xxl_job_qrtz_cron_triggers_sched_name_fkey" FOREIGN KEY ("sched_name", "trigger_name", "trigger_group") REFERENCES "djs"."xxl_job_qrtz_triggers" ("sched_name", "trigger_name", "trigger_group") ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- ----------------------------
+-- Foreign Keys structure for table xxl_job_qrtz_simple_triggers
+-- ----------------------------
+ALTER TABLE "djs"."xxl_job_qrtz_simple_triggers" ADD CONSTRAINT "xxl_job_qrtz_simple_triggers_sched_name_fkey" FOREIGN KEY ("sched_name", "trigger_name", "trigger_group") REFERENCES "djs"."xxl_job_qrtz_triggers" ("sched_name", "trigger_name", "trigger_group") ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- ----------------------------
+-- Foreign Keys structure for table xxl_job_qrtz_simprop_triggers
+-- ----------------------------
+ALTER TABLE "djs"."xxl_job_qrtz_simprop_triggers" ADD CONSTRAINT "xxl_job_qrtz_simprop_triggers_sched_name_fkey" FOREIGN KEY ("sched_name", "trigger_name", "trigger_group") REFERENCES "djs"."xxl_job_qrtz_triggers" ("sched_name", "trigger_name", "trigger_group") ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- ----------------------------
+-- Foreign Keys structure for table xxl_job_qrtz_triggers
+-- ----------------------------
+ALTER TABLE "djs"."xxl_job_qrtz_triggers" ADD CONSTRAINT "xxl_job_qrtz_triggers_sched_name_fkey" FOREIGN KEY ("sched_name", "job_name", "job_group") REFERENCES "djs"."xxl_job_qrtz_job_details" ("sched_name", "job_name", "job_group") ON DELETE NO ACTION ON UPDATE NO ACTION;
